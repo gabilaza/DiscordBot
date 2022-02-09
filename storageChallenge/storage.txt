@@ -1,0 +1,4 @@
+2022-01-22 Register in ChallengeScore 1/1 1.0
+2022-01-23 Make a program that make Sierpinski Triangle 1/1 2.5
+2022-01-24 Make a program that make Fractal Tree 1/1 2.45
+2022-01-25 Make a program that make Fireworks 1/1 1.99
