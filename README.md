@@ -54,7 +54,7 @@ Add the token in main.py (TOKEN) and then to run the computer program, you can u
 
 - ```!join```       Joins a voice channel
 
-- ```!leave```      Disconnects the bot from voice
+- ```!leave```      Disconnects the bot from voice and delete the playlist
 
 - ```!play```       Play the queue
 
