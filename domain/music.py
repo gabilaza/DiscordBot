@@ -184,6 +184,7 @@ class Music(commands.Cog):
 
     async def play_next(self, ctx):
         playlist = self.get_playlist(ctx)
+        playlist.next_song()
         if playlist.get_song():
             await self.play(ctx)
 
