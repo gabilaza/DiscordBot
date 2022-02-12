@@ -14,6 +14,8 @@ Install python 3.x.
 
 ```pip install youtube_dl```
 
+```pip install PyNaCl```
+
 ## Usage
 
 Add the token in main.py (TOKEN) and then to run the computer program, you can use: ```python main.py```
