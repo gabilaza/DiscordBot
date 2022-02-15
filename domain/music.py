@@ -87,9 +87,22 @@ class Playlist:
 
     def show(self):
         if self.queue:
-            return f'```Queue:\n - '+'\n - '.join(self.queue)+'```'
+            return f'```Queue:\n - '+'\n - '.join([str(i+1)+" -> "+el for i, el in enumerate(self.queue)])+'```'
         else:
             return '```Queue is empty```'
+
+
+    def remove(self, idx):
+        if idx > 0 and idx <= len(self.queue) and self.indexQ != idx-1:
+            s = self.queue[idx-1]
+            del(self.queue[idx-1])
+            if self.indexQ > idx-1:
+                self.indexQ -= 1
+            return f'```Deleted ({s}) from the queue```'
+        elif self.indexQ == idx-1:
+            return '```You can\'t delete a running song```'
+        else:
+            return '```This id is not in the queue```'
 
 
     def clear(self):
@@ -152,6 +165,19 @@ class Music(commands.Cog):
         """Add song"""
         playlist = self.get_playlist(ctx)
         playlist.add(url)
+
+
+    @commands.command()
+    @commands.guild_only()
+    async def qremove(self, ctx, *, idx):
+        """Remove song"""
+        try:
+            idx = int(idx)
+            playlist = self.get_playlist(ctx)
+            s = playlist.remove(idx)
+            await ctx.send(s)
+        except:
+            await ctx.send(f'```It\'s not a natural number```')
 
 
     @commands.command()
