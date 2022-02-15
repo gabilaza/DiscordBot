@@ -64,6 +64,8 @@ Add the token in main.py (TOKEN) and then to run the computer program, you can u
 
 - ```!qclear```     Clear songs
 
+- ```!qremove```    Remove song
+
 - ```!qshow```      Show songs
 
 - ```!repeat```     Repeat songs (None or ->, Repeat1 or 1, RepeatQueue or l)
