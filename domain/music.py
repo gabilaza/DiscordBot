@@ -92,7 +92,7 @@ class Playlist:
             return '```Queue is empty```'
 
 
-    def remove(self, idx):
+    def remove(self, idx, deleteCurrent):
         if idx > 0 and idx <= len(self.queue) and self.indexQ != idx-1:
             s = self.queue[idx-1]
             del(self.queue[idx-1])
@@ -100,7 +100,13 @@ class Playlist:
                 self.indexQ -= 1
             return f'```Deleted ({s}) from the queue```'
         elif self.indexQ == idx-1:
-            return '```You can\'t delete a running song```'
+            if deleteCurrent:
+                s = self.queue[idx-1]
+                del(self.queue[idx-1])
+                self.indexQ = 0
+                return f'```Deleted ({s}) from the queue```'
+            else:
+                return '```You can\'t delete a running song```'
         else:
             return '```This id is not in the queue```'
 
@@ -174,7 +180,7 @@ class Music(commands.Cog):
         try:
             idx = int(idx)
             playlist = self.get_playlist(ctx)
-            s = playlist.remove(idx)
+            s = playlist.remove(idx, ctx.voice_client is None)
             await ctx.send(s)
         except:
             await ctx.send(f'```It\'s not a natural number```')
